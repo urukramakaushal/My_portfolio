@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07080f;--fg:#e8ecff;--mut:#8b93b8;--a:#6ee7ff;--b:#a78bfa;--c:#f472b6}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font:16px/1.7 Inter,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3,.logo{font-family:'Space Grotesk',Inter,sans-serif}
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+.glow{position:fixed;width:520px;height:520px;border-radius:50%;filter:blur(120px);opacity:.25;z-index:0;pointer-events:none}
+.g1{background:var(--b);top:-160px;left:-120px}.g2{background:var(--a);bottom:-200px;right:-160px}
+nav{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:14px 6vw;background:rgba(7,8,15,.6);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+.logo{font-weight:700;font-size:1.1rem;background:linear-gradient(90deg,var(--a),var(--c));-webkit-background-clip:text;color:transparent}
+nav div a{color:var(--mut);text-decoration:none;margin-left:22px;font-size:.9rem;transition:.2s}nav div a:hover{color:var(--a)}
+main{position:relative;z-index:1}section{padding:100px 6vw;max-width:1100px;margin:auto}
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;max-width:none}
+.hi{color:var(--a);font-family:'Space Grotesk';letter-spacing:.2em;text-transform:uppercase;font-size:.85rem}
+h1{font-size:clamp(2.6rem,8vw,5.6rem);line-height:1.05;margin:10px 0;background:linear-gradient(100deg,#fff 30%,var(--a) 60%,var(--b));-webkit-background-clip:text;color:transparent}
+.role{font-size:clamp(1.1rem,3vw,1.7rem);color:var(--mut);min-height:2.2em}.role b{color:var(--fg);font-weight:500}
+.cur{display:inline-block;width:2px;height:1.1em;background:var(--a);margin-left:3px;vertical-align:middle;animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{padding:12px 24px;border-radius:999px;text-decoration:none;font-weight:500;font-size:.95rem;border:1px solid rgba(255,255,255,.18);color:var(--fg);transition:.25s}
+.btn.p{background:linear-gradient(90deg,var(--a),var(--b));color:#06070d;border:0}.btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(110,231,255,.2)}
+.scroll{position:absolute;bottom:28px;left:6vw;color:var(--mut);font-size:.8rem;letter-spacing:.2em;animation:fl 2s ease-in-out infinite}@keyframes fl{50%{transform:translateY(8px)}}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:34px}h2 span{color:var(--a);font-size:.5em;vertical-align:middle;margin-right:10px;font-weight:500}
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:26px;backdrop-filter:blur(10px);transition:transform .15s ease-out,border-color .3s;transform-style:preserve-3d}
+.card:hover{border-color:rgba(110,231,255,.45)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;margin-top:30px}
+.stat b{display:block;font:700 2.2rem 'Space Grotesk';background:linear-gradient(90deg,var(--a),var(--c));-webkit-background-clip:text;color:transparent}.stat small{color:var(--mut)}
+.about p{font-size:1.15rem;color:#c9cffa;max-width:760px}
+.tags span{display:inline-block;padding:5px 14px;margin:4px 6px 4px 0;border-radius:999px;background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.3);color:#d6ccff;font-size:.85rem;transition:.2s}.tags span:hover{background:var(--b);color:#0a0a14;transform:translateY(-2px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;perspective:900px}
+.card h3{font-size:1.15rem;margin-bottom:8px}.card h4{font:500 .8rem 'Space Grotesk';color:var(--a);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+.card p{color:var(--mut);font-size:.95rem}
+.tl{position:relative;padding-left:30px;border-left:2px solid rgba(110,231,255,.25)}.tl .card{margin-bottom:22px;position:relative}
+.tl .card:before{content:"";position:absolute;left:-39px;top:30px;width:14px;height:14px;border-radius:50%;background:var(--a);box-shadow:0 0 16px var(--a)}
+.tl .when{color:var(--c);font-size:.85rem}.tl ul{margin:10px 0 0 18px;color:var(--mut);font-size:.95rem}
+.lnk{display:inline-block;margin-top:14px;color:var(--a);text-decoration:none;font-size:.9rem}
+#contact{text-align:center}#contact p{color:var(--mut);margin-bottom:26px}.btns.c{justify-content:center}
+footer{position:relative;z-index:1;text-align:center;padding:30px;color:var(--mut);font-size:.8rem}
+.rv{opacity:0;transform:translateY(34px);transition:opacity .8s,transform .8s}.rv.in{opacity:1;transform:none}
+@media(max-width:640px){nav div a:not(:last-child){display:none}section{padding:80px 6vw}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style></head><body>
+<canvas id="bg"></canvas><div class="glow g1"></div><div class="glow g2"></div>
+<nav><span class="logo" id="logo"></span><div><a href="#about">About</a><a href="#skills">Skills</a><a href="#exp">Experience</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div></nav>
+<main>
+<section id="hero"><p class="hi">Hello, I'm</p><h1 id="name"></h1><p class="role"><b id="typed"></b><span class="cur"></span></p>
+<div class="btns"><a class="btn p" href="#projects">View my work</a><a class="btn" href="#contact">Get in touch</a></div><div class="scroll">SCROLL ↓</div></section>
+<section id="about" class="rv"><h2><span>01</span>About me</h2><div class="about"><p id="summary"></p></div><div class="stats" id="stats"></div></section>
+<section id="skills" class="rv"><h2><span>02</span>Skills</h2><div class="grid" id="skillGrid"></div></section>
+<section id="exp" class="rv"><h2><span>03</span>Experience</h2><div class="tl" id="expList"></div></section>
+<section id="projects" class="rv"><h2><span>04</span>Projects</h2><div class="grid" id="projGrid"></div></section>
+<section id="edu" class="rv"><h2><span>05</span>Education</h2><div class="card" id="eduCard"></div></section>
+<section id="contact" class="rv"><h2><span>06</span>Let's connect</h2><p id="loc"></p><div class="btns c" id="contactBtns"></div></section>
+</main><footer id="foot"></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const D=__DATA__;const $=id=>document.getElementById(id);
+document.title=D.NAME;$('logo').textContent=D.NAME.split(' ')[0]+'.';$('name').textContent=D.NAME;
+$('summary').textContent=D.SUMMARY;$('loc').textContent='📍 '+D.LOCATION;$('foot').textContent='© '+D.NAME+' · Built with Streamlit & Three.js';
+const tag=a=>a.map(t=>`<span>${t}</span>`).join('');
+$('stats').innerHTML=D.STATS.map(s=>`<div class="card stat"><b data-v="${s[1]}">${s[1]}</b><small>${s[0]}</small></div>`).join('');
+$('skillGrid').innerHTML=Object.entries(D.SKILLS).map(([k,v])=>`<div class="card"><h4>${k}</h4><div class="tags">${tag(v)}</div></div>`).join('');
+$('expList').innerHTML=D.EXPERIENCE.map(e=>`<div class="card"><h3>${e.role}</h3><h4>${e.org}</h4><span class="when">${e.when}</span><ul>${e.points.map(p=>`<li>${p}</li>`).join('')}</ul></div>`).join('');
+$('projGrid').innerHTML=D.PROJECTS.map(p=>`<div class="card"><h3>${p.name}</h3><p>${p.desc}</p><div class="tags" style="margin-top:14px">${tag(p.tags)}</div>${p.link?`<a class="lnk" target="_blank" href="${p.link}">View project →</a>`:''}</div>`).join('');
+const E=D.EDUCATION;$('eduCard').innerHTML=`<h3>${E.degree}</h3><h4>${E.school}</h4><p>${E.when} · ${E.note}</p>`;
+$('contactBtns').innerHTML=`<a class="btn p" href="mailto:${D.EMAIL}">${D.EMAIL}</a><a class="btn" target="_blank" href="${D.GITHUB}">GitHub</a><a class="btn" target="_blank" href="${D.LINKEDIN}">LinkedIn</a>`;
+// typing effect
+let ri=0,ci=0,del=false;const ty=$('typed');
+(function tick(){const w=D.ROLES[ri];ty.textContent=w.slice(0,ci);
+ if(!del&&ci===w.length){del=true;return setTimeout(tick,1500)}
+ if(del&&ci===0){del=false;ri=(ri+1)%D.ROLES.length}
+ ci+=del?-1:1;setTimeout(tick,del?40:80)})();
+// reveal + counters
+function count(el){const m=el.dataset.v.match(/[\d.,]+/);if(!m)return;const raw=m[0],dec=(raw.split('.')[1]||'').length,end=parseFloat(raw.replace(/,/g,''));
+ const pre=el.dataset.v.slice(0,m.index),suf=el.dataset.v.slice(m.index+raw.length),t0=performance.now();
+ (function f(t){const p=Math.min((t-t0)/1400,1),v=end*(1-Math.pow(1-p,3));
+  el.textContent=pre+v.toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf;if(p<1)requestAnimationFrame(f)})(t0)}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('[data-v]').forEach(count);io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// 3D tilt on cards
+document.querySelectorAll('.card').forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+ c.style.transform=`rotateY(${x*10}deg) rotateX(${-y*10}deg) translateZ(6px)`});c.addEventListener('mouseleave',()=>c.style.transform='')});
+// Three.js scene: wireframe core + neural-network particle field
+(function(){if(!window.THREE)return;
+ const cv=$('bg'),R=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true});R.setPixelRatio(Math.min(devicePixelRatio,2));
+ const S=new THREE.Scene(),C=new THREE.PerspectiveCamera(55,1,.1,200);C.position.z=32;
+ const core=new THREE.Group();S.add(core);
+ const ico=new THREE.Mesh(new THREE.IcosahedronGeometry(7,1),new THREE.MeshBasicMaterial({color:0x6ee7ff,wireframe:true,transparent:true,opacity:.55}));
+ const ico2=new THREE.Mesh(new THREE.IcosahedronGeometry(4.2,0),new THREE.MeshBasicMaterial({color:0xa78bfa,wireframe:true,transparent:true,opacity:.8}));
+ const ring=new THREE.Mesh(new THREE.TorusGeometry(10.5,.06,8,120),new THREE.MeshBasicMaterial({color:0xf472b6,transparent:true,opacity:.7}));
+ ring.rotation.x=1.2;core.add(ico,ico2,ring);
+ const N=170,pos=[],P=[];for(let i=0;i<N;i++){const v=new THREE.Vector3((Math.random()-.5)*90,(Math.random()-.5)*60,(Math.random()-.5)*50);P.push(v);pos.push(v.x,v.y,v.z)}
+ const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));
+ const pts=new THREE.Points(g,new THREE.PointsMaterial({color:0xbfd4ff,size:.35,transparent:true,opacity:.9}));
+ const lp=[];for(let i=0;i<N;i++)for(let j=i+1;j<N;j++)if(P[i].distanceTo(P[j])<11)lp.push(P[i].x,P[i].y,P[i].z,P[j].x,P[j].y,P[j].z);
+ const lg=new THREE.BufferGeometry();lg.setAttribute('position',new THREE.Float32BufferAttribute(lp,3));
+ const lines=new THREE.LineSegments(lg,new THREE.LineBasicMaterial({color:0x6e7cff,transparent:true,opacity:.18}));
+ const field=new THREE.Group();field.add(pts,lines);S.add(field);
+ let mx=0,my=0,sy=0;addEventListener('mousemove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+ addEventListener('scroll',()=>sy=scrollY);
+ function size(){const w=innerWidth,h=innerHeight;R.setSize(w,h,false);C.aspect=w/h;C.updateProjectionMatrix();core.position.x=w>800?11:0;core.scale.setScalar(w>800?1:.75)}
+ size();addEventListener('resize',size);
+ const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ (function loop(t){requestAnimationFrame(loop);const s=t*.001*(still?0:1);
+  ico.rotation.set(s*.25+my,s*.35+mx,0);ico2.rotation.set(-s*.4,-s*.3,s*.2);ring.rotation.z=s*.5;
+  core.position.y=Math.sin(s)*.8-sy*.012;field.rotation.y=s*.03+mx*.25+sy*.0006;field.rotation.x=my*.15;
+  C.position.z=32+Math.min(sy*.004,6);R.render(S,C)})(0);
+})();
+</script></body></html>
