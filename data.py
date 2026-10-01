@@ -3,8 +3,10 @@ NAME = "Urukrama Kaushal"
 TITLE = "Data Science Student"
 LOCATION = "Indore, Madhya Pradesh"
 EMAIL = "urukramakaushal@gmail.com"
-GITHUB = "https://github.com/your-username"          # TODO: replace
-LINKEDIN = "https://linkedin.com/in/your-username"   # TODO: replace
+GITHUB = "https://github.com/urukramakaushal"
+LINKEDIN = "https://www.linkedin.com/in/urukrama-kaushal-35673b1b2/"
+
+ROLES = ["Data Science Student", "ML & NLP Builder", "Full Stack Developer"]
 
 SUMMARY = (
     "Passionate Data Science student skilled in developing and applying machine learning "
@@ -48,14 +50,14 @@ PROJECTS = [
         "desc": "Chatbot for domain-specific queries with customized answers. Uses TensorFlow, PyTorch and "
                 "LangChain for NLP, intent recognition and context-aware, dynamic responses.",
         "tags": ["TensorFlow", "PyTorch", "LangChain", "NLP"],
-        "link": "",  # TODO: paste repo link
+        "link": "",  # paste repo link, e.g. "https://github.com/urukramakaushal/chatbot"
     },
     {
         "name": "Movie Recommendation System",
         "desc": "Recommendation engine built with Python, Pandas and Scikit-learn, implementing both "
                 "content-based and collaborative filtering.",
         "tags": ["Python", "Pandas", "Scikit-learn"],
-        "link": "",  # TODO: paste repo link
+        "link": "",  # paste repo link
     },
 ]
 
@@ -65,5 +67,3 @@ EDUCATION = {
     "when": "Sep 2022 – Present",
     "note": "Current CGPA: 9.6/10",
 }
-
-ROLES = ["Data Science Student", "ML & NLP Builder", "Full Stack Developer"]

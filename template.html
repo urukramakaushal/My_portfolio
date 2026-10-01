@@ -63,9 +63,15 @@ const tag=a=>a.map(t=>`<span>${t}</span>`).join('');
 $('stats').innerHTML=D.STATS.map(s=>`<div class="card stat"><b data-v="${s[1]}">${s[1]}</b><small>${s[0]}</small></div>`).join('');
 $('skillGrid').innerHTML=Object.entries(D.SKILLS).map(([k,v])=>`<div class="card"><h4>${k}</h4><div class="tags">${tag(v)}</div></div>`).join('');
 $('expList').innerHTML=D.EXPERIENCE.map(e=>`<div class="card"><h3>${e.role}</h3><h4>${e.org}</h4><span class="when">${e.when}</span><ul>${e.points.map(p=>`<li>${p}</li>`).join('')}</ul></div>`).join('');
-$('projGrid').innerHTML=D.PROJECTS.map(p=>`<div class="card"><h3>${p.name}</h3><p>${p.desc}</p><div class="tags" style="margin-top:14px">${tag(p.tags)}</div>${p.link?`<a class="lnk" target="_blank" href="${p.link}">View project →</a>`:''}</div>`).join('');
+$('projGrid').innerHTML=D.PROJECTS.map(p=>`<div class="card"><h3>${p.name}</h3><p>${p.desc}</p><div class="tags" style="margin-top:14px">${tag(p.tags)}</div>${p.link?`<a class="lnk" target="_blank" rel="noopener" href="${p.link}">View project →</a>`:''}</div>`).join('');
 const E=D.EDUCATION;$('eduCard').innerHTML=`<h3>${E.degree}</h3><h4>${E.school}</h4><p>${E.when} · ${E.note}</p>`;
-$('contactBtns').innerHTML=`<a class="btn p" href="mailto:${D.EMAIL}">${D.EMAIL}</a><a class="btn" target="_blank" href="${D.GITHUB}">GitHub</a><a class="btn" target="_blank" href="${D.LINKEDIN}">LinkedIn</a>`;
+$('contactBtns').innerHTML=`<a class="btn p" target="_blank" rel="noopener" href="mailto:${D.EMAIL}">${D.EMAIL}</a><a class="btn" target="_blank" rel="noopener" href="${D.GITHUB}">GitHub</a><a class="btn" target="_blank" rel="noopener" href="${D.LINKEDIN}">LinkedIn</a>`;
+// Smooth-scroll for in-page links (plain anchors don't work reliably inside Streamlit's iframe)
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+  e.preventDefault();
+  const t=document.querySelector(a.getAttribute('href'));
+  if(t)t.scrollIntoView({behavior:'smooth'});
+}));
 // typing effect
 let ri=0,ci=0,del=false;const ty=$('typed');
 (function tick(){const w=D.ROLES[ri];ty.textContent=w.slice(0,ci);
